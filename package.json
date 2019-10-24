@@ -1,0 +1,19 @@
+{
+  "name": "romeohuntev1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "site.region",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sudo squarespace-server https://romeohunte.squarespace.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://romeohunte.squarespace.com/template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@squarespace/server": "^1.6.0"
+  }
+}
