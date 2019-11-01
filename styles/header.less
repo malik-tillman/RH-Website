@@ -1,66 +1,26 @@
-// =======================================================
-
-//    General
-
-// =======================================================
-
+// Loading
 .enable-load-effects {
+  .LoadingLogo {
+    // Show Logo while Loading
+  }
 
   .Header [data-nc-container] {
     opacity: 0;
-
     .transition(opacity 200ms 600ms ease-out);
   }
+
   .Site.loaded .Header [data-nc-container] {
     opacity: 1;
   }
 
-}
-
-
-
-// -----------------------------------------
-
-//  Container
-
-
-@header-element-selector: ~"[data-nc-element]";
-@header-container-selector: ~"[data-nc-container]";
-@header-collapse-selector: ~"[data-nc-collapse]";
-
-.Header {
-  @{header-element-selector} {
-    padding: (@tweak-header-element-spacing-vertical / 2) (@tweak-header-element-spacing-horizontal / 2);
+  .Site.loaded .LoadingLogo {
+    // Hide Logo
   }
 }
 
-.Header-inner {
-  .border-box;
-  padding-left: (@tweak-site-side-padding - (@tweak-header-element-spacing-horizontal / 2));
-  padding-right: (@tweak-site-side-padding - (@tweak-header-element-spacing-horizontal / 2));
-  .responsive-padding-horizontal(@tweak-site-side-padding, (@tweak-header-element-spacing-horizontal / -2));
-}
 
-
-// -----------------------------------------
-
-//  Top
-
-.Header--top {
-
-  display: none;
-  background: @tweak-header-top-background-color;
-  .font-smoothing(@tweak-header-top-background-color);
-
-}
-.Header-inner--top {
-  padding-top: @tweak-header-top-padding;
-  padding-bottom: @tweak-header-top-padding;
-}
-
-// Show
+// Show Mobile Header at Breakpoint
 @media screen and (min-width: @tweak-mobile-breakpoint) {
-
   .ancillary-header-branding-position-top-left,
   .ancillary-header-tagline-position-top-left.has-tagline,
   .ancillary-header-primary-nav-position-top-left.has-primary-nav,
@@ -85,18 +45,44 @@
   .ancillary-header-search-position-top-right,
   .ancillary-header-cart-position-top-right.has-cart,
   .ancillary-header-account-position-top-right.has-user-accounts {
-
     .Header--top { display: block; }
-
   }
-
 }
 
 
-// -----------------------------------------
+// Header Container Styles
+@header-element-selector: ~"[data-nc-element]";
+@header-container-selector: ~"[data-nc-container]";
+@header-collapse-selector: ~"[data-nc-collapse]";
 
-//  Bottom
+.Header {
+  @{header-element-selector} {
+    padding: (@tweak-header-element-spacing-vertical / 2) (@tweak-header-element-spacing-horizontal / 2);
+  }
+}
 
+.Header-inner {
+  .border-box;
+  padding-left: (@tweak-site-side-padding - (@tweak-header-element-spacing-horizontal / 2));
+  padding-right: (@tweak-site-side-padding - (@tweak-header-element-spacing-horizontal / 2));
+  .responsive-padding-horizontal(@tweak-site-side-padding, (@tweak-header-element-spacing-horizontal / -2));
+}
+
+
+// Header Top Styles
+.Header--top {
+  display: none;
+  background: @tweak-header-top-background-color;
+  .font-smoothing(@tweak-header-top-background-color);
+}
+
+.Header-inner--top {
+  padding-top: @tweak-header-top-padding;
+  padding-bottom: @tweak-header-top-padding;
+}
+
+
+// Header Bottom Styles
 .Header--bottom {
 
   display: none;
@@ -114,7 +100,7 @@
     background: transparent;
 
     // I would like the z-index here to be lower,
-    // but anything below 1000 makes causes dropdown menus 
+    // but anything below 1000 makes causes dropdown menus
     // to be hidden behind image galleries.
     z-index: 1000;
     width: 100%;
@@ -131,7 +117,7 @@
 }
 
 @media screen and (min-width: @tweak-mobile-breakpoint) {
-  
+
   .ancillary-header-branding-position-bottom-left,
   .ancillary-header-tagline-position-bottom-left.has-tagline,
   .ancillary-header-primary-nav-position-bottom-left.has-primary-nav,
@@ -163,64 +149,42 @@
 }
 
 
-
-
-// =======================================================
-
-//    Branding
-
-// =======================================================
-
+// Branding
 .Header-branding {
-
   .has-site-title & { text-rendering: optimizeLegibility; }
   .has-logo-image & { line-height: 0; }
   &-logo { width: 100%; }
-
 }
 
 .has-site-title .Header-branding {
   .tweak-header-branding-site-title-font;
   color: @tweak-header-branding-site-title-color;
 }
+
 .has-site-title {
   .Header--overlay,
   &.tweak-header-bottom-overlay-on-index-gallery .Header--index-gallery {
     .Header-branding { color: @tweak-header-overlay-branding-site-title-color; }
   }
 }
+
 .Header-branding-logo { max-width: @tweak-header-logo-width; }
 
 
-
-
-// =======================================================
-
-//    Tagline
-
-// =======================================================
-
+// Tagline
 .Header-tagline {
   max-width: 40em;
   @{header-collapse-selector} & { max-width: 25em; }
   .tweak-header-tagline-font;
   color: @tweak-header-tagline-color;
 }
-.Header--overlay,
-.tweak-header-bottom-overlay-on-index-gallery .Header--index-gallery {
+
+.Header--overlay, .tweak-header-bottom-overlay-on-index-gallery .Header--index-gallery {
   .Header-tagline { color: @tweak-header-overlay-tagline-color; }
 }
 
 
-
-
-
-// =======================================================
-
-//    Nav
-
-// =======================================================
-
+// Nav Styles
 .mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = primary) {
   .Header-nav-inner { margin: -0.618em (-1 * @tweak-header-primary-nav-link-spacing); }
 }
@@ -237,6 +201,7 @@
   @folder-link-color:   @tweak-header-primary-nav-folder-link-color;
   .mixin-header-nav-style(@option);
 }
+
 .mixin-header-nav(@name, @colors, @option, @button-style: solid) when (@name = primary) and (@colors = overlay) {
   @link-color:          @tweak-header-overlay-primary-nav-link-color;
   @active-link-color:   @tweak-header-overlay-primary-nav-link-active-color;
@@ -269,16 +234,19 @@
   .Header-nav-folder { background-color: @folder-color; .font-smoothing(@folder-color); }
   .Header-nav-folder-item { color: @folder-link-color; }
 }
+
 .mixin-header-nav-style(@option) when (@option = fade) {
   .Header-nav-item:hover { .alpha-color(@link-color, 0.4); }
   .Header-nav-folder-item:hover { .alpha-color(@folder-link-color, 0.4); }
 }
+
 .mixin-header-nav-style(@option) when (@option = spotlight) {
   &:hover .Header-nav-item { .alpha-color(@link-color, 0.4); }
   &:hover .Header-nav-item:hover { color: @link-color; }
   .Header-nav-folder-item { .alpha-color(@folder-link-color, 0.4); }
   .Header-nav-folder-item:hover { color: @folder-link-color; }
 }
+
 .mixin-header-nav-style(@option) when (@option = active) {
   .Header-nav-item:hover { color: @active-link-color; }
   .Header-nav-folder-item:hover { color: @active-link-color; }
@@ -299,6 +267,7 @@
 .mixin-header-nav-style(@option) when (@option = button) {
   .mixin-header-nav-button-style-colors(@button-style);
 }
+
 
 // Colors only
 .mixin-header-nav-button-style-colors(@style) when (@style = solid) {
@@ -344,6 +313,7 @@
   }
 }
 
+
 // Non-color styles
 .mixin-header-nav-button-style(@style) when (@style = solid) {
   .Header-nav-item {
@@ -380,6 +350,7 @@
     }
   }
 }
+
 .mixin-header-nav-button-shape(@shape) when (@shape = pill) {
   .Header-nav-item {
     border-radius: 300px;
@@ -387,9 +358,8 @@
 }
 
 
+// Header Styles
 .Header-nav {
-
-
   white-space: nowrap;
   line-height: 1em;
   @{header-collapse-selector} & { white-space: normal; }
@@ -400,12 +370,10 @@
   }
 
   &-item {
-
     display: inline-block;
     vertical-align: middle;
 
     &--folder { position: relative; }
-
   }
 
   &-folder {
@@ -426,12 +394,9 @@
     &-title { display: inline; }
 
     &-item {
-
       display: block;
       padding: 0.382em;
-
     }
-
   }
 
   &-item--folder:hover &-folder {
@@ -444,6 +409,7 @@
 }
 
 .Header-nav { .tweak-header-primary-nav-font; }
+
 .tweak-header-primary-nav-hover-style-plain {
   .Header-nav {
     .mixin-header-nav(primary, regular, plain);
@@ -453,6 +419,7 @@
     .mixin-header-nav(primary, overlay, plain);
   }
 }
+
 .tweak-header-primary-nav-hover-style-fade {
   .Header-nav {
     .mixin-header-nav(primary, regular, fade);
@@ -462,6 +429,7 @@
     .mixin-header-nav(primary, overlay, fade);
   }
 }
+
 .tweak-header-primary-nav-hover-style-spotlight {
   .Header-nav {
     .mixin-header-nav(primary, regular, spotlight);
@@ -471,6 +439,7 @@
     .mixin-header-nav(primary, overlay, spotlight);
   }
 }
+
 .tweak-header-primary-nav-hover-style-active {
   .Header-nav {
     .mixin-header-nav(primary, regular, active);
@@ -480,6 +449,7 @@
     .mixin-header-nav(primary, overlay, active);
   }
 }
+
 .tweak-header-primary-nav-hover-style-button {
   .Header-nav--primary {
     .mixin-header-nav-style-button();
@@ -528,6 +498,7 @@
     }
   }
 }
+
 .tweak-header-primary-nav-hover-style-button.tweak-header-secondary-nav-inherit-styles {
   .Header-nav {
     .mixin-header-nav-style-button();
@@ -578,6 +549,7 @@
 }
 
 body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .tweak-header-secondary-nav-font; }
+
 .tweak-header-secondary-nav-hover-style-plain:not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary {
     .mixin-header-nav(secondary, regular, plain);
@@ -587,6 +559,7 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     .mixin-header-nav(secondary, overlay, plain);
   }
 }
+
 .tweak-header-secondary-nav-hover-style-fade:not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary {
     .mixin-header-nav(secondary, regular, fade);
@@ -596,6 +569,7 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     .mixin-header-nav(secondary, overlay, fade);
   }
 }
+
 .tweak-header-secondary-nav-hover-style-spotlight:not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary {
     .mixin-header-nav(secondary, regular, spotlight);
@@ -605,6 +579,7 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     .mixin-header-nav(secondary, overlay, spotlight);
   }
 }
+
 .tweak-header-secondary-nav-hover-style-active:not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary {
     .mixin-header-nav(secondary, regular, active);
@@ -614,6 +589,7 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     .mixin-header-nav(secondary, overlay, active);
   }
 }
+
 .tweak-header-secondary-nav-hover-style-button:not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary {
     .mixin-header-nav-style-button();
@@ -674,6 +650,7 @@ body:not(.tweak-header-secondary-nav-inherit-styles) .Header-nav--secondary { .t
     margin: 0.618em @tweak-header-primary-nav-link-spacing;
   }
 }
+
 body:not(.tweak-header-primary-nav-hover-style-button) {
   .Header-nav--primary .Header-nav-item,
   &.tweak-header-secondary-nav-inherit-styles .Header-nav--secondary .Header-nav-item {
@@ -681,12 +658,14 @@ body:not(.tweak-header-primary-nav-hover-style-button) {
     padding: 0.618em 0;
   }
 }
+
 .tweak-header-secondary-nav-hover-style-button:not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary .Header-nav-item {
     padding: 12px 18px;
     margin: 0.618em @tweak-header-secondary-nav-link-spacing;
   }
 }
+
 body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secondary-nav-inherit-styles) {
   .Header-nav--secondary .Header-nav-item {
     margin: 0 @tweak-header-secondary-nav-link-spacing;
@@ -695,16 +674,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
 }
 
 
-
-
-
-// =======================================================
-
-//    Search
-
-// =======================================================
-
-
+// Search
 .mixin-header-search(@option, @text-color, @icon-color, @border-color, @background-color) {
   .Header-search {
     // Force stroke alpha to 1 because overlapping
@@ -715,6 +685,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
   }
   .Header-search-form-submit:hover { opacity: alpha(@icon-color); }
 }
+
 .mixin-header-search(@option, @text-color, @icon-color, @border-color, @background-color) when (@option = underlined) {
   .Header-search {
     color: @text-color;
@@ -747,7 +718,6 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
   // Show small search icon
   .Header-search .Icon--search--small { display: block; }
 }
-
 
 .Header-search {
   @header-search-padding: 0.5em;
@@ -816,6 +786,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
 }
 
 .Header-search { .tweak-header-search-font; }
+
 .tweak-header-search-style-underlined {
   .mixin-header-search(underlined, @tweak-header-search-text-color, @tweak-header-search-icon-color, @tweak-header-search-border-color, @tweak-header-search-background-color);
   .Header--overlay,
@@ -823,6 +794,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
     .mixin-header-search(underlined, @tweak-header-overlay-search-text-color, @tweak-header-overlay-search-icon-color, @tweak-header-overlay-search-border-color, @tweak-header-overlay-search-background-color);
   }
 }
+
 .tweak-header-search-style-rectangle {
   .mixin-header-search(rectangle, @tweak-header-search-text-color, @tweak-header-search-icon-color, @tweak-header-search-border-color, @tweak-header-search-background-color);
   .Header--overlay,
@@ -830,6 +802,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
     .mixin-header-search(rectangle, @tweak-header-overlay-search-text-color, @tweak-header-overlay-search-icon-color, @tweak-header-overlay-search-border-color, @tweak-header-overlay-search-background-color);
   }
 }
+
 .tweak-header-search-style-icon-only {
   .mixin-header-search(icon, @tweak-header-search-text-color, @tweak-header-search-icon-color, @tweak-header-search-border-color, @tweak-header-search-background-color);
   .Header--overlay,
@@ -839,15 +812,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
 }
 
 
-
-
-// =======================================================
-
-//    Social
-
-// =======================================================
-
-
+// Social
 .Header--overlay {
   .mixin-template-social-icons-color(@tweak-social-icons-overlay-color);
 }
@@ -857,15 +822,7 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
 }
 
 
-
-
-
-
-// =======================================================
-
-//    User Accounts
-
-// =======================================================
+// User Accounts
 
 .Header-account {
   .tweak-header-account-font;
@@ -919,5 +876,3 @@ body:not(.tweak-header-secondary-nav-hover-style-button):not(.tweak-header-secon
     }
   }
 }
-
-

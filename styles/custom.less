@@ -1,0 +1,28 @@
+
+.Header--bottom {
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 0;
+
+  background-color: white !important;
+
+  z-index: 2;
+}
+
+.Header-nav-item {
+  color: black !important;
+}
+
+.Header-inner--top {
+  z-index: 1;
+}
+
+@supports (backdrop-filter: blur(10px)) {
+  .Mobile-overlay {
+    backdrop-filter: blur(10px);
+  }
+}
+
+.Mobile-overlay {
+  background-color: rgba(255, 255, 255, .5) !important;
+}
