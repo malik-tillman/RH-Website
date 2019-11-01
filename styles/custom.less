@@ -1,3 +1,8 @@
+// -----------------------------------------------------------------------------
+// Custom.less for Romeo Hunte Official website
+// Author: Malik Tillman
+//  This is the top level CSS
+// -----------------------------------------------------------------------------
 
 .Header--bottom {
   position: sticky !important;
@@ -6,17 +11,15 @@
 
   background-color: white !important;
 
-  z-index: 2;
+  z-index: 3;
 }
 
 .Header-nav-item {
   color: black !important;
 }
 
-.Header-inner--top {
-  z-index: 1;
-}
 
+// -----Mobile OverLay-----
 @supports (backdrop-filter: blur(10px)) {
   .Mobile-overlay {
     backdrop-filter: blur(10px);
@@ -25,4 +28,41 @@
 
 .Mobile-overlay {
   background-color: rgba(255, 255, 255, .5) !important;
+}
+
+.ProductList-filter--categories {
+  position: sticky !important;
+  top: 100px;
+}
+
+@media only screen and (max-width: 640px) {
+  .ProductList-filter--categories {
+    position: sticky !important;
+    top: 75px;
+
+    background-color: white !important;
+
+    z-index: 2 !important;
+  }
+
+  div.ProductList-grid.clear {
+    position: relative !important;
+    z-index: 0 !important;
+  }
+}
+
+.ProductItem-gallery-slides-item-image {
+  
+}
+
+.Mobile-overlay-nav-item {
+  background-color: transparent !important;
+}
+
+.Mobile-overlay-nav-item {
+  color: black !important;
+}
+
+.Mobile-overlay-folder-item {
+  font-size: 16px !important;
 }

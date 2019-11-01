@@ -1,6 +1,5 @@
 <div class="Mobile" data-nc-base="mobile-bar" data-controller="AncillaryLayout">
   <div class="Mobile-bar Mobile-bar--top" data-nc-group="top" data-controller="MobileOffset">
-
     <div data-nc-container="top-left">
       <a href="/" class="Mobile-bar-branding" data-nc-element="branding" data-content-field="site-title">
         {.section website}
@@ -15,6 +14,7 @@
     <div data-nc-container="top-center"></div>
     <div data-nc-container="top-right"></div>
   </div>
+
   <div class="Mobile-bar Mobile-bar--bottom" data-nc-group="bottom" data-controller="MobileOffset">
     <div data-nc-container="bottom-left">
       <button class="Mobile-bar-menu" data-nc-element="menu-icon" data-controller-overlay="menu" data-controller="MobileOverlayToggle">
