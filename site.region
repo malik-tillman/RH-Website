@@ -70,7 +70,6 @@
 
       <div class="Site-inner{.equal? collection.typeName "index"} Site-inner--index{.end}"{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.equal? typeName "gallery"} data-controller="HeaderOverlay"{.end}{.end}{.end}{.or}{.if item}{.or}{.section collection}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}>
 
-
         <header class="Header Header--top">
           <div class="Header-inner Header-inner--top" data-nc-group="top">
             <div data-nc-container="top-left">
@@ -116,7 +115,7 @@
           </div>
         </header>
 
-        <header class="Header Header--bottom">
+        <header id="header-bottom-container" class="Header Header--bottom">
           <div class="Header-inner Header-inner--bottom" data-nc-group="bottom">
             <div data-nc-container="bottom-left">
               <nav class="Header-nav Header-nav--primary" data-nc-element="primary-nav" data-content-field="navigation">
