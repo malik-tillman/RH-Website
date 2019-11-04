@@ -4,22 +4,39 @@
 //  This is the top level CSS
 // -----------------------------------------------------------------------------
 
-.Header--bottom {
+.Index-page-content {
+  position: relative !important;
+  padding-top: 0 !important;
+}
+
+.Header-inner {
+}
+
+#header-bottom-container {
   position: sticky !important;
   position: -webkit-sticky !important;
-  top: 0;
 
-  background-color: white !important;
+  top: 0;
 
   z-index: 3;
 }
+
+
+
+.Header--bottom {
+
+}
+
+.Header-inner{
+}
+
 
 .Header-nav-item {
   color: black !important;
 }
 
 
-// -----Mobile OverLay-----
+// -----Mobile Menu OverLay-----
 @supports (backdrop-filter: blur(10px)) {
   .Mobile-overlay {
     backdrop-filter: blur(10px);
@@ -65,4 +82,8 @@
 
 .Mobile-overlay-folder-item {
   font-size: 16px !important;
+}
+
+.image-block-wrapper {
+  min-height: 100vh;
 }
