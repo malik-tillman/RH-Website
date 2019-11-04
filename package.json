@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-linux": "sudo squarespace-server https://romeohunte.squarespace.com",
-    "start-win": "squarespace-server https://romeohunte.squarespace.com"
+    "start-win": "squarespace-server https://romeohunte.squarespace.com",
+    "push": "git push origin master",
+    "fetch": "git fetch origin master",
+    "pull": "git pull oring mater"
   },
   "repository": {
     "type": "git",

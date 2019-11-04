@@ -1,6 +1,7 @@
 <!doctype html>
 <html {.if authenticatedAccount}data-authenticated-account{.end}>
   <head>
+    <script src="scripts/custom.js" defer></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="initial-scale=1">
 
@@ -70,7 +71,7 @@
 
       <div class="Site-inner{.equal? collection.typeName "index"} Site-inner--index{.end}"{.equal? collection.typeName "index"}{.section collection}{.section collections.0}{.equal? typeName "page"}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.equal? typeName "gallery"} data-controller="HeaderOverlay"{.end}{.end}{.end}{.or}{.if item}{.or}{.section collection}{.background-source-video?} data-controller="HeaderOverlay"{.or}{.section mainImage} data-controller="HeaderOverlay"{.end}{.end}{.end}{.end}{.end}>
 
-        <header class="Header Header--top">
+        <header id="header-top-container" class="Header Header--top">
           <div class="Header-inner Header-inner--top" data-nc-group="top">
             <div data-nc-container="top-left">
 
@@ -115,7 +116,7 @@
           </div>
         </header>
 
-        <header id="header-bottom-container" class="Header Header--bottom">
+        <header id="header-bottom-container" class="Header Header--bottom header-bottom-shadow">
           <div class="Header-inner Header-inner--bottom" data-nc-group="bottom">
             <div data-nc-container="bottom-left">
               <nav class="Header-nav Header-nav--primary" data-nc-element="primary-nav" data-content-field="navigation">
