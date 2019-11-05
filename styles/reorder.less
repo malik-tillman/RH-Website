@@ -1,0 +1,57 @@
+// -----------------------------------------------------------------------------
+// Reorder.less for Romeo Hunte Official website
+// Author: Malik Tillman
+//  Reorders catogory/filter list items. Uses nth child approach and thus must
+//  be reviewed apon addition of new catogory/filter list items.
+// -----------------------------------------------------------------------------
+
+// Make filter list a flexbox column
+.ProductList-filter-list {
+  display: flex !important;
+  flex-direction: column;
+}
+
+// --All
+.ProductList-filter-list-item:nth-child(1){
+  order: 0 !important;
+}
+
+// --Blazers
+.ProductList-filter-list-item:nth-child(2){
+  order: 6 !important;
+}
+
+// --Coats
+.ProductList-filter-list-item:nth-child(3){
+  order: 4 !important;
+}
+
+// --Fall 19
+.ProductList-filter-list-item:nth-child(4){
+  order: 8 !important;
+}
+
+// --Jackets
+.ProductList-filter-list-item:nth-child(5){
+  order: 3 !important;
+}
+
+// --Outerwear
+.ProductList-filter-list-item:nth-child(6){
+  order: 2 !important;
+}
+
+// --Poncho
+.ProductList-filter-list-item:nth-child(7){
+  order: 5 !important;
+}
+
+// --Separates
+.ProductList-filter-list-item:nth-child(8){
+  order: 7 !important;
+}
+
+// --Spring Summer 19
+.ProductList-filter-list-item:nth-child(9){
+  order: 9 !important;
+}
