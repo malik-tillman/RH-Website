@@ -7,6 +7,9 @@
 /* Top of page */
 var lastScrollPos = 0;
 
+/* Mobile Breakpoint */
+var mobileBreakpoint = 640;
+
 /* DOM Query for Top and Bottom Header */
 var topHeader = document.getElementById("header-top-container");
 var bottomHeader = document.getElementById("header-bottom-container");
@@ -30,13 +33,40 @@ for(item in filterItems) {
   filterHeight += 20;
 }
 
-setInterval(function(){
-  if(filterList == document.getElementsByClassName("ProductList-filter-list")){
-  }
+/* Toggles Catagory/Filter List */
+function toggleFilterList() {
+  filterToggler ^= true;
 
-  else
-    console.log(false);
-}, 1000);
+  if(filterToggler) {
+    // Open
+    filterList[0].style.height = filterHeight + "px";
+    filterList[0].style.opacity = 1;
+  } else {
+    // Close
+    filterList[0].style.height = "0px";
+    filterList[0].style.opacity = 0;
+  }
+}
+
+/* Reset Filter Label Reference */
+function filterReset(detach) {
+  if(window.innerWidth <= mobileBreakpoint) {
+    /* Get Current Catogory/Filter Refs */
+    var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
+    var currentFilterList = document.getElementsByClassName("ProductList-filter-list");
+    var currentFilterItems = document.getElementsByClassName("ProductList-filter-list");
+
+    /* Detach Current Event Listener */
+    if(detach){ filterLabel[0].removeEventListener("click", toggleFilterList, false); }
+
+    // /* Reset Catagory/Filter DOM References */
+    filterLabel = currentFilterLabel;
+    filterList = currentFilterList;
+
+    /* Re-Attach Event Listener for Deteting Mobile Catogory/Filter Label Toggles */
+    filterLabel[0].addEventListener("click", toggleFilterList, false);
+  }
+}
 
 /* Event Listener for Deteting Scroll */
 window.addEventListener("scroll", function() {
@@ -66,19 +96,8 @@ window.addEventListener("scroll", function() {
   lastScrollPos = thisScrollPos <= 0 ? 0 : thisScrollPos;
 }, false);
 
-/* Event Listener for Deteting Mobile Catogory/Filter Label Toggles */
-filterLabel[0].addEventListener("click", function () {
-  filterToggler ^= true;
+/* Give Catagory/Filter List a Reset onStart*/
+filterReset(false);
 
-  console.log(filterHeight);
-
-  if(filterToggler) {
-    // Open
-    filterList[0].style.height = filterHeight + "px";
-    filterList[0].style.opacity = 1;
-  } else {
-    // Close
-    filterList[0].style.height = "0px";
-    filterList[0].style.opacity = 0;
-  }
-}, false);
+/* Keep Resetting Each Second */
+setInterval(function() {filterReset(true)}, 1000);
