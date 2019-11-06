@@ -7,7 +7,8 @@
 /* Top of page */
 var lastScrollPos = 0;
 
-/* DOM Query for Bottom Header */
+/* DOM Query for Top and Bottom Header */
+var topHeader = document.getElementById("header-top-container");
 var bottomHeader = document.getElementById("header-bottom-container");
 
 /* Null top style */
@@ -29,9 +30,13 @@ for(item in filterItems) {
   filterHeight += 20;
 }
 
-window.addEventListener("load", function(){
-  console.log("Loaded");
-}, false)
+setInterval(function(){
+  if(filterList == document.getElementsByClassName("ProductList-filter-list")){
+  }
+
+  else
+    console.log(false);
+}, 1000);
 
 /* Event Listener for Deteting Scroll */
 window.addEventListener("scroll", function() {
@@ -44,11 +49,17 @@ window.addEventListener("scroll", function() {
     if (bottomHeader.style.top == "55px"){
       bottomHeader.style.top = topNull;
     }
+
+    /* Also Make Top Header Transparent */
+    topHeader.style.opacity = 0;
   } else {
     /* If scroll is going up, stick bottom header to bottom of top header */
     if (bottomHeader.style.top == topNull ){
       bottomHeader.style.top = "55px";
     }
+
+    /* Also Make Top Header Visible */
+    topHeader.style.opacity = 1;
   }
 
   /* Mobile/Negative Scroll Fix */
