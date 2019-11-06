@@ -26,12 +26,12 @@ var filterItems = document.getElementsByClassName("ProductList-filter-list-item"
 var filterToggler = 0;
 
 /* Catagory/Filter List Container Height */
-var filterHeight = 0;
+var filterHeight = 220;
 
 /* Calculate Catagory/Filter List Container Height */
-for(item in filterItems) {
-  filterHeight += 20;
-}
+// for(item in filterItems) {
+//   filterHeight += 20;
+// }
 
 /* Toggles Catagory/Filter List */
 function toggleFilterList() {
@@ -50,7 +50,7 @@ function toggleFilterList() {
 
 /* Reset Filter Label Reference */
 function filterReset(detach) {
-  if(window.innerWidth <= mobileBreakpoint) {
+  if(window.innerWidth <= mobileBreakpoint && filterLabel[0]) {
     /* Get Current Catogory/Filter Refs */
     var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
     var currentFilterList = document.getElementsByClassName("ProductList-filter-list");
