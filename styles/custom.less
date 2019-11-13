@@ -4,24 +4,41 @@
 //  This is the top level CSS
 // -----------------------------------------------------------------------------
 
-.Index-page-content {
-  position: relative !important;
-  padding: 0 !important;
-
-  background-color: #fffaf0 !important;
-}
-
 body {
   overflow-x: hidden !important;
 }
 
+.Main-content {
+  padding-top: 175px !important;
+  //background-color: rgba(255, 250, 240, .75) !important;
+  background-color: white !important;
+}
+
+img {
+  //background-color: #fffaf0 !important;
+  background-color: white !important;
+}
+
+.Header-branding-logo, .Mobile-bar-branding-logo {
+  background-color: transparent !important;
+}
+
+
+// -----Homepage-Body-Styles-----
+.Index-page-content {
+  position: relative !important;
+  padding: 0 !important;
+
+  //background-color: #fffaf0 !important;
+  background-color: white !important;
+}
+
+// -----Homepage-Image-Container-----
 #block-yui_3_17_2_1_1524665841184_18189 {
   padding: 0 !important;
 }
 
-.Header-inner {
-}
-
+// -----Header-Styles-----
 .header-container {
   position: absolute !important;
   width: 100vw;
@@ -43,7 +60,11 @@ body {
 
   padding: 0 25px 0 25px !important;
 
-  background-color: rgba(255, 255, 255, .75) !important;
+  //background-color: rgba(255, 255, 255, .75) !important;
+  background-color: rgba(255, 250, 240, .75) !important;
+
+  backdrop-filter: blur(3px);
+
 
   transition: opacity 450ms;
 }
@@ -54,13 +75,26 @@ body {
 
   padding: 0 25px 20px 25px !important;
 
-  background-color: rgba(255, 255, 255, .75) !important;
+  //background-color: rgba(255, 255, 255, .75) !important;
+  background-color: rgba(255, 250, 240, .75) !important;
+
+  backdrop-filter: blur(5px);
 
   top: 0;
   transition: top .5s;
   pointer-events: auto;
 
   z-index: 4;
+}
+
+.Header-nav-item {
+  color: black !important;
+}
+
+.header-bottom-shadow {
+  -webkit-box-shadow: 0px 10px 40px 0px rgba(0,0,0,.25);
+  -moz-box-shadow: 0px 10px 40px 0px rgba(0,0,0,.25);
+    box-shadow: 0px 10px 40px 0px rgba(0,0,0,.25);
 }
 
 .Header-search-form-input {
@@ -70,16 +104,6 @@ body {
 .Header-search-form-input::placeholder {
   color: black !important;
   opacity: .5 !important;
-}
-
-.header-bottom-shadow {
-  -webkit-box-shadow: 0px 66px 57px 0px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 66px 57px 0px rgba(0,0,0,1);
-  box-shadow: 0px 10px 40px 0px rgba(0,0,0,.25);
-}
-
-.Header-nav-item {
-  color: black !important;
 }
 
 
@@ -94,13 +118,82 @@ body {
   background-color: rgba(255, 255, 255, .75) !important;
 }
 
+.Mobile-overlay-nav-item {
+  background-color: transparent !important;
+}
+
+.Mobile-overlay-nav-item {
+  color: black !important;
+}
+
+.Mobile-overlay-folder-item {
+  font-size: 16px !important;
+}
+
+
+// -----Product-Page-Styles-----
 .ProductList-filter--categories {
   position: sticky !important;
   top: 200px;
 }
 
+.ProductList-grid {
+  position: relative !important;
+}
+
+.ProductList-item {
+}
+
+// -----Product-Item-Page-Styles-----
+.ProductItem-summary {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+}
+
+.ProductItem-gallery {
+  width: 55vw !important;
+  display: flex !important;
+  flex-direction: row-reverse !important;
+}
+
+.ProductItem-gallery-slides {
+  display: block;
+  width: 30vw !important;
+  //box-shadow: 0px 0px 15px 0px rgba(0,0,0,.10);
+}
+
+.ProductItem-gallery-thumbnails {
+  display: flex !important;
+  flex-direction: column !important;
+  //margin-right: 20px !important;
+}
+
+.ProductItem-gallery-thumbnails-item {
+  transition: transform 1s ease-in-out;
+  //box-shadow: 0px 0px 15px 0px rgba(0,0,0,.10);
+  margin: 10px 20px 10px 0 !important;
+}
+
+.ProductItem-gallery-thumbnails-item:hover {
+  transform: scale(1.15);
+  transition: transform 1s;
+}
+
+.ProductItem-details {
+  width: 25vw !important;
+}
+
 // -----Mobile-Breakpoint-----
 @media only screen and (max-width: 640px) {
+  .Main-content {
+    padding-top: 50px !important;
+  }
+
+  .image-block-wrapper {
+    min-height: 50vh !important;
+  }
+
   .ProductList-filter--categories {
     position: sticky !important;
     top: 75px;
@@ -117,37 +210,51 @@ body {
     margin-top: 0 !important;
   }
 
-  .image-block-wrapper {
-    //min-height: 25vh;
-  }
-
   .ProductList-filter-list {
     height: 0;
     opacity: 0;
   }
+
+
+  // -----Product-Items-----
+  .ProductItem-gallery {
+    width: 100% !important;
+    flex-direction: column !important;
+
+  }
+
+  .ProductItem-gallery-slides {
+    display: block;
+    width: 100% !important;
+  }
+
+  .ProductItem-gallery-thumbnails {
+    flex-direction: row !important;
+    margin: 0 !important;
+    justify-content: center;
+  }
+
+  .ProductItem-summary {
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+
+  .ProductItem-details {
+    width: 100% !important;
+  }
 }
 // -----Mobile-Breakpoint-----
 
-.ProductList-grid {
-  position: relative !important;
-  margin-top: 150px;
+// *****ANNOYANCES*****
+#block-yui_3_17_2_1_1573507451981_9735 {
+  display: none !important;
 }
 
-.ProductList-item {
+.Intro-content, .empty {
+  display: none !important;
 }
 
-.ProductItem-gallery-slides-item-image {
-
+.ProductItem-nav {
+  display: none !important;
 }
-
-.Mobile-overlay-nav-item {
-  background-color: transparent !important;
-}
-
-.Mobile-overlay-nav-item {
-  color: black !important;
-}
-
-.Mobile-overlay-folder-item {
-  font-size: 16px !important;
-}
+// *****ANNOYANCES*****

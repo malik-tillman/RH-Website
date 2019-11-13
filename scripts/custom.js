@@ -17,6 +17,9 @@ var bottomHeader = document.getElementById("header-bottom-container");
 /* Null top style */
 var topNull = bottomHeader.style.top;
 
+/* Top Header Height or Bottom Header Displacement */
+var bottomDisplacement = "52px";
+
 /* DOM Query for Catogory/Filter Label, List Container, and Items */
 var filterLabel;
 var filterList = document.getElementsByClassName("ProductList-filter-list");
@@ -27,11 +30,6 @@ var filterToggler = 0;
 
 /* Catagory/Filter List Container Height */
 var filterHeight = 220;
-
-/* Calculate Catagory/Filter List Container Height */
-// for(item in filterItems) {
-//   filterHeight += 20;
-// }
 
 /* Toggles Catagory/Filter List */
 function toggleFilterList() {
@@ -51,15 +49,13 @@ function toggleFilterList() {
 /* Check if we Have our Filters in Page */
 function filterCheck() {
   filterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
-
-  if(filterLabel)
-    console.log("On Products Page");
 }
 
 /* Reset Filter Label Reference */
 function filterReset(detach) {
   filterCheck();
   if(window.innerWidth <= mobileBreakpoint && filterLabel[0]) {
+    console.log("On Products Page");
     /* Get Current Catogory/Filter Refs */
     var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
     var currentFilterList = document.getElementsByClassName("ProductList-filter-list");
@@ -85,7 +81,7 @@ window.addEventListener("scroll", function() {
   /* Check For Scroll Direction */
   if (thisScrollPos > lastScrollPos) {
     /* If scroll is going down, stick bottom header to top of page*/
-    if (bottomHeader.style.top == "55px"){
+    if (bottomHeader.style.top == bottomDisplacement){
       bottomHeader.style.top = topNull;
     }
 
@@ -94,7 +90,7 @@ window.addEventListener("scroll", function() {
   } else {
     /* If scroll is going up, stick bottom header to bottom of top header */
     if (bottomHeader.style.top == topNull ){
-      bottomHeader.style.top = "55px";
+      bottomHeader.style.top = bottomDisplacement;
     }
 
     /* Also Make Top Header Visible */
@@ -103,6 +99,14 @@ window.addEventListener("scroll", function() {
 
   /* Mobile/Negative Scroll Fix */
   lastScrollPos = thisScrollPos <= 0 ? 0 : thisScrollPos;
+}, false);
+
+/* Event Listener for Deteting Page Load */
+window.addEventListener("load", function() {
+  console.log("Loaded");
+  var player;
+
+
 }, false);
 
 /* Give Catagory/Filter List a Reset onStart*/
