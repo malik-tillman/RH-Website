@@ -18,7 +18,7 @@ var bottomHeader = document.getElementById("header-bottom-container");
 var topNull = bottomHeader.style.top;
 
 /* DOM Query for Catogory/Filter Label, List Container, and Items */
-var filterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
+var filterLabel;
 var filterList = document.getElementsByClassName("ProductList-filter-list");
 var filterItems = document.getElementsByClassName("ProductList-filter-list-item");
 
@@ -48,8 +48,17 @@ function toggleFilterList() {
   }
 }
 
+/* Check if we Have our Filters in Page */
+function filterCheck() {
+  filterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
+
+  if(filterLabel)
+    console.log("On Products Page");
+}
+
 /* Reset Filter Label Reference */
 function filterReset(detach) {
+  filterCheck();
   if(window.innerWidth <= mobileBreakpoint && filterLabel[0]) {
     /* Get Current Catogory/Filter Refs */
     var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
