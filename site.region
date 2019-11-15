@@ -18,7 +18,6 @@
       => http://romeohunte.squarespace.com/?format=json-pretty
       => http://romeohunte.squarespace.com/<PAGE>/?format=json-pretty
     }
-
     <div class="Loader"></div>
 
     {@|apply mobile.block}
