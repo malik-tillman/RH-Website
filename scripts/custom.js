@@ -18,7 +18,7 @@ var bottomHeader = document.getElementById("header-bottom-container");
 var topNull = bottomHeader.style.top;
 
 /* Top Header Height or Bottom Header Displacement */
-var bottomDisplacement = "52px";
+var bottomDisplacement = "47px";
 
 /* DOM Query for Catogory/Filter Label, List Container, and Items */
 var filterLabel;
