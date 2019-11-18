@@ -103,10 +103,11 @@ window.addEventListener("scroll", function() {
 
 /* Event Listener for Deteting Page Load */
 window.addEventListener("load", function() {
-  console.log("Loaded");
-  var player;
+  //console.log("Loaded");
+}, false);
 
-
+window.addEventListener("resize", function() {
+  //console.log("Resized");
 }, false);
 
 /* Give Catagory/Filter List a Reset onStart*/
