@@ -10,6 +10,12 @@ var lastScrollPos = 0;
 /* Mobile Breakpoint */
 var mobileBreakpoint = 640;
 
+/* DOM Query for Body */
+let body = document.getElementsByTagName("BODY")[0];
+
+/* DOM Query for Loader */
+let loader = document.getElementById("real-loader");
+
 /* DOM Query for Top and Bottom Header */
 var topHeader = document.getElementById("header-top-container");
 var bottomHeader = document.getElementById("header-bottom-container");
@@ -55,7 +61,6 @@ function filterCheck() {
 function filterReset(detach) {
   filterCheck();
   if(window.innerWidth <= mobileBreakpoint && filterLabel[0]) {
-    console.log("On Products Page");
     /* Get Current Catogory/Filter Refs */
     var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
     var currentFilterList = document.getElementsByClassName("ProductList-filter-list");
@@ -81,7 +86,7 @@ window.addEventListener("scroll", function() {
   /* Check For Scroll Direction */
   if (thisScrollPos > lastScrollPos) {
     /* If scroll is going down, stick bottom header to top of page*/
-    if (bottomHeader.style.top == bottomDisplacement){
+    if (bottomHeader.style.top === bottomDisplacement){
       bottomHeader.style.top = topNull;
     }
 
@@ -89,7 +94,7 @@ window.addEventListener("scroll", function() {
     topHeader.style.opacity = 0;
   } else {
     /* If scroll is going up, stick bottom header to bottom of top header */
-    if (bottomHeader.style.top == topNull ){
+    if (bottomHeader.style.top === topNull ){
       bottomHeader.style.top = bottomDisplacement;
     }
 
@@ -101,9 +106,12 @@ window.addEventListener("scroll", function() {
   lastScrollPos = thisScrollPos <= 0 ? 0 : thisScrollPos;
 }, false);
 
-/* Event Listener for Deteting Page Load */
+/* Event Listener for Detecting Page Load */
 window.addEventListener("load", function() {
-  //console.log("Loaded");
+  loader.style.bottom = "100vh";
+
+  body.style.setProperty("overflow-y", "scroll", "important");
+
 }, false);
 
 window.addEventListener("resize", function() {

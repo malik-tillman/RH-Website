@@ -7,14 +7,69 @@
 // *****Variables*****
 @header-bg-color: rgba(255, 249, 237, .7) !important;
 
+
 body {
-  overflow-x: hidden !important;
+  overflow: hidden !important;
+}
+
+#real-loader {
+  width: 100vw !important;
+  height: 100vh !important;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: white !important;
+
+  z-index: 99;
+
+  bottom: 0;
+
+  transition: bottom 1s ease-in-out;
+
+}
+
+#load-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  transform: translateY(-5vh);
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#load-logo {
+  width: 200px;
+  margin-bottom: 50px;
+}
+
+#load-spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #000000; /* Blue */
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  animation: spin 1s linear infinite;
+
+  margin: 0 !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .Main-content {
   padding-top: 50px !important;
   background-color: rgba(255, 249, 237, .5);
-  // background-color: @header-bg-color;
+  //background-color: @header-bg-color;
   //background-color: white !important;
 }
 
@@ -43,7 +98,7 @@ img {
 }
 
 // -----Header-Styles-----
-.header-container {
+.header-container, .mobile-header-container {
   position: absolute !important;
   width: 100vw;
   height: 100%;
@@ -71,6 +126,12 @@ img {
 
 
   transition: opacity 450ms;
+}
+
+.Mobile-bar--top {
+  background-color: @header-bg-color;
+  backdrop-filter: blur(5px);
+  pointer-events: auto;
 }
 
 #header-bottom-container {
@@ -131,7 +192,7 @@ img {
 }
 
 .Mobile-overlay {
-  background-color: rgba(255, 255, 255, .75) !important;
+  background-color: @header-bg-color !important;
 }
 
 .Mobile-overlay-nav-item {
@@ -164,13 +225,13 @@ img {
 
 .ProductList-item {
   -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
--moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
+  -moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
+  box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
 }
 
 .ProductList-overlay {
-  padding: 15px;
-  background-color: white;
+  padding: 5px 0 15px 15px;
+  background-color: rgb(255, 251, 245);
 }
 
 .ProductList-statusWrapper {
@@ -195,7 +256,9 @@ box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
 .ProductItem-gallery-slides {
   display: block;
   width: 30vw !important;
-  //box-shadow: 0px 0px 15px 0px rgba(0,0,0,.10);
+  -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
+  -moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
+  box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.11);
 }
 
 .ProductItem-gallery-thumbnails {

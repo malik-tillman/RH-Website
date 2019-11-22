@@ -18,6 +18,13 @@
       => http://romeohunte.squarespace.com/?format=json-pretty
       => http://romeohunte.squarespace.com/<PAGE>/?format=json-pretty
     }
+    <div id="real-loader">
+      <div id="load-content">
+        <img id="load-logo" src="https://static1.squarespace.com/static/58e008f744024364db9c687f/t/5dd825cdf6489a1d4d9eaee1/1574446541508/Full+Logo+%5BNo+Tagline+Check+Bottom%5D.png" alt="Load Logo">
+        <div id="load-spinner"></div>
+      </div>
+    </div>
+
     <div class="Loader"></div>
 
     {@|apply mobile.block}
@@ -147,7 +154,7 @@
           </div>
         </header>
 
-        
+
 
 
         <div class="Content-outer">
