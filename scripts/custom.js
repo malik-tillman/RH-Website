@@ -46,32 +46,6 @@ function toggleFilterList() {
   }
 }
 
-/* Check if we Have our Filters in Page */
-function filterCheck() {
-  filterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
-}
-
-/* Reset Filter Label Reference */
-function filterReset(detach) {
-  filterCheck();
-  if(window.innerWidth <= mobileBreakpoint && filterLabel[0]) {
-    /* Get Current Catogory/Filter Refs */
-    var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
-    var currentFilterList = document.getElementsByClassName("ProductList-filter-list");
-    var currentFilterItems = document.getElementsByClassName("ProductList-filter-list");
-
-    /* Detach Current Event Listener */
-    if(detach){ filterLabel[0].removeEventListener("click", toggleFilterList, false); }
-
-    // /* Reset Catagory/Filter DOM References */
-    filterLabel = currentFilterLabel;
-    filterList = currentFilterList;
-
-    /* Re-Attach Event Listener for Deteting Mobile Catogory/Filter Label Toggles */
-    filterLabel[0].addEventListener("click", toggleFilterList, false);
-  }
-}
-
 /* Event Listener for Deteting Scroll */
 window.addEventListener("scroll", function() {
   /* Catch the Current Scroll Position */
@@ -104,8 +78,29 @@ window.addEventListener("resize", function() {
   //console.log("Resized");
 }, false);
 
+/* Reset Filter Label Reference */
+function filterReset(detach) {
+  filterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
+  if(window.innerWidth <= mobileBreakpoint && filterLabel[0]) {
+    /* Get Current Catogory/Filter Refs */
+    var currentFilterLabel = document.getElementsByClassName("ProductList-filter-dropdownToggle-label");
+    var currentFilterList = document.getElementsByClassName("ProductList-filter-list");
+    var currentFilterItems = document.getElementsByClassName("ProductList-filter-list");
+
+    /* Detach Current Event Listener */
+    if(detach){ filterLabel[0].removeEventListener("click", toggleFilterList, false); }
+
+    /* Reset Category/Filter DOM References */
+    filterLabel = currentFilterLabel;
+    filterList = currentFilterList;
+
+    /* Re-Attach Event Listener for Deteting Mobile Catogory/Filter Label Toggles */
+    filterLabel[0].addEventListener("click", toggleFilterList, false);
+  }
+}
+
 /* Give Catagory/Filter List a Reset onStart*/
 filterReset(false);
 
 /* Keep Resetting Each Second */
-setInterval(function() {filterReset(true)}, 1000);
+setInterval(function() {filterReset(true)}, 100);
