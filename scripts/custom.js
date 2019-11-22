@@ -100,14 +100,6 @@ window.addEventListener("scroll", function() {
   lastScrollPos = thisScrollPos <= 0 ? 0 : thisScrollPos;
 }, false);
 
-// /* Event Listener for Detecting Page Load */
-// window.addEventListener("load", function() {
-//   loader.style.bottom = "100vh";
-//
-//   body.style.setProperty("overflow-y", "scroll", "important");
-//
-// }, false);
-
 window.addEventListener("resize", function() {
   //console.log("Resized");
 }, false);
