@@ -13,6 +13,8 @@ var mobileBreakpoint = 640;
 /* DOM Query for Body */
 let body = document.getElementsByTagName("BODY")[0];
 
+let href = window.location.href;
+
 /* DOM Query for Loader */
 let loader = document.getElementById("real-loader");
 
@@ -123,3 +125,11 @@ filterReset(false);
 
 /* Keep Resetting Each Second */
 setInterval(function() {filterReset(true)}, 1000);
+
+setInterval(function () {
+  if(href !== window.location.href){
+    href = window.location.href;
+
+    body.style.setProperty("overflow-y", "scroll", "important");
+  }
+}, 50);
