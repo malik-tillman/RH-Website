@@ -132,4 +132,8 @@ setInterval(function () {
 
     body.style.setProperty("overflow-y", "scroll", "important");
   }
+
+  if(document.readyState === "complete" && loader.style.bottom !== "100vh"){
+    loader.style.bottom = "100vh";
+  }
 }, 50);
