@@ -10,14 +10,6 @@ var lastScrollPos = 0;
 /* Mobile Breakpoint */
 var mobileBreakpoint = 640;
 
-/* DOM Query for Body */
-let body = document.getElementsByTagName("BODY")[0];
-
-let href = window.location.href;
-
-/* DOM Query for Loader */
-let loader = document.getElementById("real-loader");
-
 /* DOM Query for Top and Bottom Header */
 var topHeader = document.getElementById("header-top-container");
 var bottomHeader = document.getElementById("header-bottom-container");
@@ -108,13 +100,13 @@ window.addEventListener("scroll", function() {
   lastScrollPos = thisScrollPos <= 0 ? 0 : thisScrollPos;
 }, false);
 
-/* Event Listener for Detecting Page Load */
-window.addEventListener("load", function() {
-  loader.style.bottom = "100vh";
-
-  body.style.setProperty("overflow-y", "scroll", "important");
-
-}, false);
+// /* Event Listener for Detecting Page Load */
+// window.addEventListener("load", function() {
+//   loader.style.bottom = "100vh";
+//
+//   body.style.setProperty("overflow-y", "scroll", "important");
+//
+// }, false);
 
 window.addEventListener("resize", function() {
   //console.log("Resized");
@@ -125,15 +117,3 @@ filterReset(false);
 
 /* Keep Resetting Each Second */
 setInterval(function() {filterReset(true)}, 1000);
-
-setInterval(function () {
-  if(href !== window.location.href){
-    href = window.location.href;
-
-    body.style.setProperty("overflow-y", "scroll", "important");
-  }
-
-  if(document.readyState === "complete" && loader.style.bottom !== "100vh"){
-    loader.style.bottom = "100vh";
-  }
-}, 50);
